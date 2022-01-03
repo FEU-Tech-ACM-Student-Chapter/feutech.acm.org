@@ -2,10 +2,16 @@ module.exports = {
   content: [
     './resources/**/*.js',
     './resources/**/*.vue',
-    './resources/**/*.blade.css',
+    './resources/**/*.blade.php',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Montserrat', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
