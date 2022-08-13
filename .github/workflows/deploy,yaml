@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  push: # Trigger workflow each time a push is made...
+    branches: #...on the following branches:
+      - main
+  # pull_request # Trigger workflow each time a PR is made...
+    # branches: #...on the following branches:
+      # - main
+
+# Authenticate with the server through ssh, then 
+# run the deploy script (/.scripts/deploy.sh)
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # grab a system that can do the automation
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          script: "cd ~/preview.feutech.edu.ph && ./.scripts/deploy.sh"
