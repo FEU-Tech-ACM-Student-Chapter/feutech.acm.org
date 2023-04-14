@@ -1,3 +1,74 @@
+/* Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    /* Replacement for Google Fonts' broken outline version (hmp) */
+    @font-face {
+        font-family: "MontserratLocal";
+        font-weight: 900;
+        font-variation-settings: 'wght' 900; 
+        src: url(/storage/fonts/montserrat/montserrat900.ttf) format("truetype");
+    }
+
+    html {
+        @apply scroll-smooth scroll-pt-16; 
+    }
+
+    .fas, .fab {
+        @apply mr-2;
+    }
+}
+
+@layer components {
+
+    .btn {
+        @apply bg-white px-4 py-2 my-2 rounded-xl hover:shadow-lg transition-shadow;
+    }
+
+    .navbar {
+        @apply flex justify-between align-middle;
+    }
+
+    .navbar li {
+        @apply text-white flex flex-row items-center hover:bg-zinc-600 px-2;
+    }
+
+    /* This card container define is for the "code-fun-awesome" part of the site. */
+    #show .card-container {
+        @apply p-8 w-9/12 lg:w-3/12 flex flex-col items-center text-center;
+    }
+
+    #show .card-container img {
+        @apply object-contain h-24 mb-8
+    }
+
+    #show .card-container h1 {
+        @apply text-4xl font-bold mb-4;
+    }
+
+    #show .card-container p {
+        @apply text-xl;
+    }
+
+    .card {
+        @apply bg-white text-black rounded-lg shadow-lg overflow-hidden mb-4;
+    }
+}
+
+@layer utilities {
+    /* Tailwind CSS does not have text-stroke weight support yet */
+    .text-stroke-1 {
+        text-stroke-width: 2px;
+        -webkit-text-stroke-width: 2px; /* and apparently does not support prefixes yet...?*/
+    }
+    
+    /* Tailwind CSS does not have text-stroke color support yet */
+    .text-stroke-black {
+        text-stroke-color: black;
+        -webkit-text-stroke-color: black; /* and apparently does not support prefixes yet...?*/
+    }
+}
